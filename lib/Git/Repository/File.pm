@@ -1,6 +1,7 @@
 package Git::Repository::File;
 use strict;
 use warnings;
+use 5.006;
 our $VERSION = '0.01';
 
 use Git::Repository::Log::Iterator;
@@ -47,21 +48,64 @@ __END__
 
 =head1 NAME
 
-Git::Repository::File -
+Git::Repository::File - Class representing file on git repository
 
 =head1 SYNOPSIS
 
-  use Git::Repository::File;
+  # load the File plugin
+  use Git::Repository 'File';
+  
+  my $repo = Git::Repository->new;
+  my $file = $repo->file('somefile');
+  
+  print $file->created_at;
+  print $file->created_by;
+  print $file->last_modified_at;
+  print $file->last_modified_by;
 
 =head1 DESCRIPTION
 
-Git::Repository::File is
+Git::Repository::File is class representing file on git repository.
+
+=head1 CONSTRUCTOR
+
+=head2 new( $file_name )
+
+Create a new C<Git::Repository::File> instance, using the file name
+on git repository as parameter.
+
+=head2 ACCESORS
+
+The following accessors methods are recognized.
+
+=over 5
+
+=item created_at
+
+=item last_modified_at
+
+Return epoch (*for the present*).
+They would return any object handling datetime.
+(eg. DateTime, Time::Piece)
+
+=item created_by
+
+=item last_modified_by
+
+=item logs
+
+Return array of Git::Repository::Log objects
+
+=back
 
 =head1 AUTHOR
 
 Masayuki Matsuki E<lt>y.songmu@gmail.comE<gt>
 
 =head1 SEE ALSO
+
+L<Git::Repository>
+L<Git::Repository::Log>
 
 =head1 LICENSE
 
