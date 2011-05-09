@@ -3,6 +3,41 @@ use strict;
 use warnings;
 our $VERSION = '0.01';
 
+use Git::Repository::Log::Iterator;
+
+sub new {
+    my ($kls, $file) = @_;
+
+    my $iter = Git::Repository::Log::Iterator->new($file);
+    my @logs;
+    while ( my $log = $iter->next ){
+        push @logs, $log;
+    }
+    bless {
+        _file_name => $file,
+        _logs      => \@logs,
+    }, $kls;
+}
+
+sub name { shift->{_file_name}; }
+
+sub created_at {
+    shift->{_logs}[-1]->author_gmtime;
+}
+
+sub last_modified_at {
+    shift->{_logs}[0]->author_gmtime;
+}
+
+sub created_by {
+    shift->{_logs}[-1]->author_name;
+}
+
+sub last_modified_by {
+    shift->{_logs}[0]->author_name;
+}
+
+
 1;
 __END__
 

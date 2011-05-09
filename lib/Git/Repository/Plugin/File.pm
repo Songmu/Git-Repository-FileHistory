@@ -1,0 +1,20 @@
+package Git::Repository::Plugin::File;
+
+use warnings;
+use strict;
+use 5.006;
+
+use Git::Repository::Plugin;
+our @ISA = qw/Git::Repository::Plugin/;
+sub _keywords { qw/file/ }
+
+use Git::Repository::File;
+
+our $VERSION = '0.01';
+
+sub file {
+    shift;
+    Git::Repository::File->new(@_);
+}
+
+1;
