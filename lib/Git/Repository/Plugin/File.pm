@@ -13,7 +13,7 @@ use Git::Repository::File;
 our $VERSION = '0.01';
 
 sub file {
-    shift;
+    shift if !ref $_[0];
     Git::Repository::File->new(@_);
 }
 

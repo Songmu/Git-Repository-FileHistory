@@ -6,9 +6,9 @@ our $VERSION = '0.01';
 use Git::Repository::Log::Iterator;
 
 sub new {
-    my ($kls, $file) = @_;
-
-    my $iter = Git::Repository::Log::Iterator->new($file);
+    my $kls = shift;
+    my ($file) = grep { !ref $_ } @_;
+    my $iter = Git::Repository::Log::Iterator->new(@_);
     my @logs;
     while ( my $log = $iter->next ){
         push @logs, $log;
