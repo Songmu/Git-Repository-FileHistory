@@ -2,7 +2,7 @@ use inc::Module::Install;
 name 'Git-Repository-File';
 all_from 'lib/Git/Repository/File.pm';
 
-# requires '';
+requires 'Git::Repository';
 
 tests 't/*.t';
 author_tests 'xt';

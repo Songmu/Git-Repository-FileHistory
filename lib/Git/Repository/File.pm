@@ -13,6 +13,7 @@ sub new {
     while ( my $log = $iter->next ){
         push @logs, $log;
     }
+    die "$file has no logs!" unless @logs;
     bless {
         _file_name => $file,
         _logs      => \@logs,
