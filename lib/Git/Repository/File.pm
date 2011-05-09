@@ -37,6 +37,9 @@ sub last_modified_by {
     shift->{_logs}[0]->author_name;
 }
 
+sub logs {
+    @{shift->{_logs}};
+}
 
 1;
 __END__
