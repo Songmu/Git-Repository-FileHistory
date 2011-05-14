@@ -54,7 +54,7 @@ ok( $git_file->created_at == $git_file->last_modified_at , 'last_modified_at');
 
 my @logs = $git_file->logs;
 ok( @logs == 1 );
-ok( $_->isa('Git::Repository::Log'), 'log is Git::Repository') for @logs;
+ok( $_->isa('Git::Repository::Log'), 'log is Git::Repository::Log') for @logs;
 
 sleep 1;
 
@@ -67,6 +67,6 @@ ok( $git_file->created_at == $git_file2->created_at , 'created_at');
 ok( $git_file2->created_at != $git_file2->last_modified_at , 'last_modified_at');
 @logs = $git_file2->logs;
 ok( @logs == 2 );
-ok( $_->isa('Git::Repository::Log'), 'log is Git::Repository') for @logs;
+ok( $_->isa('Git::Repository::Log'), 'log is Git::Repository::Log') for @logs;
 
 done_testing;

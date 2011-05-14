@@ -23,12 +23,34 @@ sub new {
 
 sub name { shift->{_file_name}; }
 
+sub use_datetime {
+    my $self = shift;
+    eval 'use DateTime';
+    $self->{_inflate} = sub {
+        DateTime->from_epoch( epoch => shift);
+    };
+    $self;
+}
+
+sub use_time_piece {
+    my $self = shift;
+    eval 'use Time::Piece';
+    $self->{_inflate} = sub {
+        Time::Piece::gmtime(shift);
+    };
+    $self;
+}
+
 sub created_at {
-    shift->{_logs}[-1]->author_gmtime;
+    my $self = shift;
+    my $epoch = $self->{_logs}[-1]->author_gmtime;
+    $self->{_inflate} ? $self->{_inflate}->($epoch) : $epoch;
 }
 
 sub last_modified_at {
-    shift->{_logs}[0]->author_gmtime;
+    my $self = shift;
+    my $epoch = $self->{_logs}[0]->author_gmtime;
+    $self->{_inflate} ? $self->{_inflate}->($epoch) : $epoch;
 }
 
 sub created_by {
@@ -84,9 +106,9 @@ The following accessors methods are recognized.
 
 =item last_modified_at
 
-Return epoch (*for the present*).
-They would return any object handling datetime.
-(eg. DateTime, Time::Piece)
+Return epoch as default.
+You can use $file->use_datetime or $file->use_time_piece feature for
+returning object of DateTime or Time::Piece;
 
 =item created_by
 
@@ -95,6 +117,10 @@ They would return any object handling datetime.
 =item logs
 
 Return array of Git::Repository::Log objects
+
+=item use_datetime
+
+=item use_time_piece
 
 =back
 
