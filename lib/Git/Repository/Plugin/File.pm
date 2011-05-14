@@ -3,6 +3,7 @@ package Git::Repository::Plugin::File;
 use warnings;
 use strict;
 use 5.006;
+our $VERSION = '0.01';
 
 use Git::Repository::Plugin;
 our @ISA = qw/Git::Repository::Plugin/;
