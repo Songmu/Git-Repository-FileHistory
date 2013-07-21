@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Git-Repository-File",
+   "name" : "Git-Repository-FileHistory",
    "no_index" : {
       "directory" : [
          "t",
@@ -48,7 +48,7 @@
       "runtime" : {
          "requires" : {
             "Git::Repository" : "0",
-            "perl" : "5.006"
+            "perl" : "5.008001"
          }
       }
    },

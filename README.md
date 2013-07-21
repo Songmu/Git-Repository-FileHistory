@@ -5,11 +5,11 @@ Git::Repository::FileHistory - Class representing file on git repository
 # SYNOPSIS
 
     # load the File plugin
-    use Git::Repository 'File';
+    use Git::Repository 'FileHistory';
     
 
     my $repo = Git::Repository->new;
-    my $file = $repo->file('somefile');
+    my $file = $repo->file_history('somefile');
     
 
     print $file->created_at;
@@ -35,18 +35,13 @@ The following accessors methods are recognized.
 - created\_at
 - last\_modified\_at
 
-    Return epoch as default.
-    You can use $file->use\_datetime or $file->use\_time\_piece feature for
-    returning object of DateTime or Time::Piece;
+    Return epoch.
 
 - created\_by
 - last\_modified\_by
 - logs
 
     Return array of Git::Repository::Log objects
-
-- use\_datetime
-- use\_time\_piece
 
 # AUTHOR
 

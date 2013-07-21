@@ -68,7 +68,7 @@ Git::Repository::FileHistory - Class representing file on git repository
   use Git::Repository 'FileHistory';
   
   my $repo = Git::Repository->new;
-  my $file = $repo->file('somefile');
+  my $file = $repo->file_history('somefile');
   
   print $file->created_at;
   print $file->created_by;
@@ -96,9 +96,7 @@ The following accessors methods are recognized.
 
 =item last_modified_at
 
-Return epoch as default.
-You can use $file->use_datetime or $file->use_time_piece feature for
-returning object of DateTime or Time::Piece;
+Return epoch.
 
 =item created_by
 
@@ -107,10 +105,6 @@ returning object of DateTime or Time::Piece;
 =item logs
 
 Return array of Git::Repository::Log objects
-
-=item use_datetime
-
-=item use_time_piece
 
 =back
 
