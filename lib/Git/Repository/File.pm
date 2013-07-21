@@ -1,7 +1,7 @@
 package Git::Repository::File;
 use strict;
 use warnings;
-use 5.006;
+use 5.008001;
 our $VERSION = '0.01';
 
 use Git::Repository::Log::Iterator;
