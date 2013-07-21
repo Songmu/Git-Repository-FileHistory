@@ -7,11 +7,13 @@ our $VERSION = '0.01';
 use Git::Repository::Log::Iterator;
 
 sub new {
-    my ($class, $repo, $file) = (shift, shift, shift);
-    my %args = @_ == 1 ? %{$_[0]} : @_;
+    my ($class, $repo, @files) = @_;
 
-    my @cmd = ('--', $file);
-    unshift @cmd, $args{branch} if $args{branch};
+    my $args;
+       $args = pop @files if ref $files[-1] eq 'HASH';
+
+    my @cmd = ('--', @files);
+    unshift @cmd, $args->{branch} if $args->{branch};
 
     my $iter = Git::Repository::Log::Iterator->new($repo, @cmd);
     my @logs;
@@ -20,12 +22,12 @@ sub new {
     }
 
     bless {
-        file_name => $file,
+        file_name => @files == 1 ? $files[0] : \@files,
         logs      => \@logs,
     }, $class;
 }
 
-sub file_name { shift->{file_name}; }
+sub file_name { shift->{file_name} }
 
 sub logs {
     my $logs = shift->{logs};
