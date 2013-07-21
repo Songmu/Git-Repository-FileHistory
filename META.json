@@ -55,13 +55,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/Songmu/Git-Repository-File/issues"
+         "web" : "https://github.com/Songmu/Git-Repository-FileHistory/issues"
       },
-      "homepage" : "https://github.com/Songmu/Git-Repository-File",
+      "homepage" : "https://github.com/Songmu/Git-Repository-FileHistory",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/Songmu/Git-Repository-File.git",
-         "web" : "https://github.com/Songmu/Git-Repository-File"
+         "url" : "git://github.com/Songmu/Git-Repository-FileHistory.git",
+         "web" : "https://github.com/Songmu/Git-Repository-FileHistory"
       }
    },
    "version" : "0.01",
