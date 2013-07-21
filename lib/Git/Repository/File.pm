@@ -7,44 +7,52 @@ our $VERSION = '0.01';
 use Git::Repository::Log::Iterator;
 
 sub new {
-    my $kls = shift;
-    my ($file) = grep { !ref $_ } @_;
-    my $iter = Git::Repository::Log::Iterator->new(@_);
+    my ($class, $repo, $file) = (shift, shift, shift);
+    my %args = @_ == 1 ? %{$_[0]} : @_;
+
+    my @cmd = ('--', $file);
+    unshift @cmd, $args{branch} if $args{branch};
+
+    my $iter = Git::Repository::Log::Iterator->new($repo, @cmd);
     my @logs;
     while ( my $log = $iter->next ){
         push @logs, $log;
     }
-    die "$file has no logs!" unless @logs;
+
     bless {
-        _file_name => $file,
-        _logs      => \@logs,
-    }, $kls;
+        file_name => $file,
+        logs      => \@logs,
+    }, $class;
 }
 
-sub name { shift->{_file_name}; }
+sub file_name { shift->{file_name}; }
+
+sub logs {
+    my $logs = shift->{logs};
+    wantarray ? @$logs : $logs;
+}
+
+sub last_log  { shift->logs->[0]  }
+sub first_log { shift->logs->[-1] }
 
 sub created_at {
-    my $self = shift;
-
-    $self->{_logs}[-1]->author_gmtime;
+    my $first = shift->first_log;
+    $first && $first->author_gmtime;
 }
 
 sub last_modified_at {
-    my $self = shift;
-
-    $self->{_logs}[0]->author_gmtime;
+    my $last = shift->last_log;
+    $last && $last->author_gmtime;
 }
 
 sub created_by {
-    shift->{_logs}[-1]->author_name;
+    my $first = shift->first_log;
+    $first && $first->author_name;
 }
 
 sub last_modified_by {
-    shift->{_logs}[0]->author_name;
-}
-
-sub logs {
-    @{shift->{_logs}};
+    my $last = shift->last_log;
+    $last && $last->author_name;
 }
 
 1;
