@@ -23,34 +23,16 @@ sub new {
 
 sub name { shift->{_file_name}; }
 
-sub use_datetime {
-    my $self = shift;
-    eval 'use DateTime';
-    $self->{_inflate} = sub {
-        DateTime->from_epoch( epoch => shift);
-    };
-    $self;
-}
-
-sub use_time_piece {
-    my $self = shift;
-    eval 'use Time::Piece';
-    $self->{_inflate} = sub {
-        Time::Piece::gmtime(shift);
-    };
-    $self;
-}
-
 sub created_at {
     my $self = shift;
-    my $epoch = $self->{_logs}[-1]->author_gmtime;
-    $self->{_inflate} ? $self->{_inflate}->($epoch) : $epoch;
+
+    $self->{_logs}[-1]->author_gmtime;
 }
 
 sub last_modified_at {
     my $self = shift;
-    my $epoch = $self->{_logs}[0]->author_gmtime;
-    $self->{_inflate} ? $self->{_inflate}->($epoch) : $epoch;
+
+    $self->{_logs}[0]->author_gmtime;
 }
 
 sub created_by {

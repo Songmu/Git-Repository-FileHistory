@@ -64,31 +64,4 @@ ok( $git_file2->created_at != $git_file2->last_modified_at , 'last_modified_at')
 ok( @logs == 2 );
 ok( $_->isa('Git::Repository::Log'), 'log is Git::Repository::Log') for @logs;
 
-
-my $created_at_datetime;
-SKIP: {
-    eval { require DateTime };
-    skip 'DateTime not installed', 1 if $@;
-
-    $git_file2->use_datetime;
-    $created_at_datetime = $git_file2->created_at;
-    ok $created_at_datetime->isa('DateTime'), 'use_datetime ok';
-}
-
-my $created_at_time_piece;
-SKIP: {
-    eval { require Time::Piece };
-    skip 'Time::Piece not installed', 1 if $@;
-
-    $git_file2->use_time_piece;
-    $created_at_time_piece = $git_file2->created_at;
-    ok $created_at_time_piece->isa('Time::Piece'), 'use_time_piece ok';
-}
-
-SKIP: {
-    skip 'DateTime or Time::Piece not installed', 1 if !$created_at_datetime || !$created_at_time_piece;
-    ok $created_at_datetime->epoch == $created_at_time_piece->epoch;
-}
-
-
 done_testing;
