@@ -94,13 +94,19 @@ The following accessors methods are recognized.
 
 =item created_at
 
+Return epoch.
+
 =item last_modified_at
 
 Return epoch.
 
 =item created_by
 
+Return author name.
+
 =item last_modified_by
+
+Return author name.
 
 =item logs
 

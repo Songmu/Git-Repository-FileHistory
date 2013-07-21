@@ -33,12 +33,21 @@ on git repository as parameter.
 The following accessors methods are recognized.
 
 - created\_at
+
+    Return epoch.
+
 - last\_modified\_at
 
     Return epoch.
 
 - created\_by
+
+    Return author name.
+
 - last\_modified\_by
+
+    Return author name.
+
 - logs
 
     Return array of Git::Repository::Log objects
