@@ -60,6 +60,8 @@ sub last_modified_by {
 1;
 __END__
 
+=for stopwords BooK
+
 =head1 NAME
 
 Git::Repository::FileHistory - Class representing file on git repository
@@ -119,6 +121,8 @@ Return array of Git::Repository::Log objects
 =head1 AUTHOR
 
 Masayuki Matsuki E<lt>y.songmu@gmail.comE<gt>
+
+BooK gives me many advice. Thanks a lot.
 
 =head1 SEE ALSO
 

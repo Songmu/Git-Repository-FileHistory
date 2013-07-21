@@ -56,6 +56,8 @@ The following accessors methods are recognized.
 
 Masayuki Matsuki <y.songmu@gmail.com>
 
+BooK gives me many advice. Thanks a lot.
+
 # SEE ALSO
 
 [Git::Repository](http://search.cpan.org/perldoc?Git::Repository)
