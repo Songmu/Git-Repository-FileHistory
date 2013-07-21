@@ -36,18 +36,18 @@ my %commit = (
 
 
 # no file method yet
-ok( !eval { $r->file }, 'no file() method' );
+ok( !eval { $r->file_history }, 'no file_history() method' );
 
 # load the file method
-use_ok( 'Git::Repository', 'File' );
-ok( $r->can('file'), 'file() method exists now' );
+use_ok( 'Git::Repository', 'FileHistory' );
+ok( $r->can('file_history'), 'file_history() method exists now' );
 
 # create an empty file and commit it
 my $file = File::Spec->catfile( $dir, 'file' );
 do { open my $fh, '>', $file; };
 $r->run( add => 'file' );
 $r->run( commit => '-m', $commit{1}{subject} );
-my $git_file = $r->file('file');
+my $git_file = $r->file_history('file');
 
 ok( $git_file->created_at - time() < 60 , 'created_at');
 ok( $git_file->created_at == $git_file->last_modified_at , 'last_modified_at');
@@ -61,7 +61,7 @@ sleep 1;
 do { open my $fh, '>', $file; print $fh 'line 1'; };
 $r->run( add => 'file' );
 $r->run( commit => '-m', "$commit{2}{subject}\n\n$commit{2}{body}" );
-my $git_file2 = $r->file('file');
+my $git_file2 = $r->file_history('file');
 
 ok( $git_file->created_at == $git_file2->created_at , 'created_at');
 ok( $git_file2->created_at != $git_file2->last_modified_at , 'last_modified_at');

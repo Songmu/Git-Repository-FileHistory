@@ -24,7 +24,7 @@ my %args = (
     },
 
     name            => 'Git-Repository-File',
-    module_name     => 'Git::Repository::File',
+    module_name     => 'Git::Repository::FileHistory',
     allow_pureperl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],

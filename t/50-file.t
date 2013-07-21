@@ -35,14 +35,14 @@ my %commit = (
 );
 
 
-use_ok( 'Git::Repository::File' );
+use_ok( 'Git::Repository::FileHistory' );
 
 # create an empty file and commit it
 my $file = File::Spec->catfile( $dir, 'file' );
 do { open my $fh, '>', $file; };
 $r->run( add => 'file' );
 $r->run( commit => '-m', $commit{1}{subject} );
-my $git_file = Git::Repository::File->new($r, 'file');
+my $git_file = Git::Repository::FileHistory->new($r, 'file');
 
 ok( $git_file->created_at - time() < 60 , 'created_at');
 ok( $git_file->created_at == $git_file->last_modified_at , 'last_modified_at');
@@ -56,7 +56,7 @@ sleep 1;
 do { open my $fh, '>', $file; print $fh 'line 1'; };
 $r->run( add => 'file' );
 $r->run( commit => '-m', "$commit{2}{subject}\n\n$commit{2}{body}" );
-my $git_file2 = Git::Repository::File->new($r, 'file');
+my $git_file2 = Git::Repository::FileHistory->new($r, 'file');
 
 ok( $git_file->created_at == $git_file2->created_at , 'created_at');
 ok( $git_file2->created_at != $git_file2->last_modified_at , 'last_modified_at');

@@ -1,4 +1,4 @@
-package Git::Repository::File;
+package Git::Repository::FileHistory;
 use strict;
 use warnings;
 use 5.008001;
@@ -60,12 +60,12 @@ __END__
 
 =head1 NAME
 
-Git::Repository::File - Class representing file on git repository
+Git::Repository::FileHistory - Class representing file on git repository
 
 =head1 SYNOPSIS
 
   # load the File plugin
-  use Git::Repository 'File';
+  use Git::Repository 'FileHistory';
   
   my $repo = Git::Repository->new;
   my $file = $repo->file('somefile');
@@ -77,13 +77,13 @@ Git::Repository::File - Class representing file on git repository
 
 =head1 DESCRIPTION
 
-Git::Repository::File is class representing file on git repository.
+Git::Repository::FileHistory is class representing file on git repository.
 
 =head1 CONSTRUCTOR
 
 =head2 new( $file_name )
 
-Create a new C<Git::Repository::File> instance, using the file name
+Create a new C<Git::Repository::FileHistory> instance, using the file name
 on git repository as parameter.
 
 =head2 ACCESORS

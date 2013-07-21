@@ -1,6 +1,6 @@
 # NAME
 
-Git::Repository::File - Class representing file on git repository
+Git::Repository::FileHistory - Class representing file on git repository
 
 # SYNOPSIS
 
@@ -19,13 +19,13 @@ Git::Repository::File - Class representing file on git repository
 
 # DESCRIPTION
 
-Git::Repository::File is class representing file on git repository.
+Git::Repository::FileHistory is class representing file on git repository.
 
 # CONSTRUCTOR
 
 ## new( $file\_name )
 
-Create a new `Git::Repository::File` instance, using the file name
+Create a new `Git::Repository::FileHistory` instance, using the file name
 on git repository as parameter.
 
 ## ACCESORS
