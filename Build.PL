@@ -23,7 +23,7 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    name            => 'Git-Repository-File',
+    name            => 'Git-Repository-FileHistory',
     module_name     => 'Git::Repository::FileHistory',
     allow_pureperl => 0,
 
