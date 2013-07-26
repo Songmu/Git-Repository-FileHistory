@@ -2,7 +2,7 @@ package Git::Repository::FileHistory;
 use strict;
 use warnings;
 use 5.008001;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Git::Repository::Log::Iterator;
 

@@ -2,6 +2,9 @@ Revision history for Perl extension Git::Repository::FileHistory
 
 {{$NEXT}}
 
+0.03 2013-07-26T11:06:29Z
+        - add `updated_at` method (alias of `last_modified_at`)
+
 0.02 2013-07-26T09:18:12Z
         - fix test cases and dependencies
 
