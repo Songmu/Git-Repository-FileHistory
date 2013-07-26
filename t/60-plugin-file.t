@@ -46,7 +46,16 @@ ok( $r->can('file_history'), 'file_history() method exists now' );
 my $file = File::Spec->catfile( $dir, 'file' );
 do { open my $fh, '>', $file; };
 $r->run( add => 'file' );
-$r->run( commit => '-m', $commit{1}{subject} );
+
+eval {
+    $r->run( commit => '-m', $commit{1}{subject} );
+};
+my $err = $@;
+if ($err =~ /fatal: unable to auto-detect email address/) {
+    note 'git error';
+    done_testing; exit;
+}
+
 my $git_file = $r->file_history('file');
 
 ok( $git_file->created_at - time() < 60 , 'created_at');

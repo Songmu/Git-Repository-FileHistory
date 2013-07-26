@@ -34,14 +34,22 @@ my %commit = (
     },
 );
 
-
 use_ok( 'Git::Repository::FileHistory' );
 
 # create an empty file and commit it
 my $file = File::Spec->catfile( $dir, 'file' );
 do { open my $fh, '>', $file; };
 $r->run( add => 'file' );
-$r->run( commit => '-m', $commit{1}{subject} );
+
+eval {
+    $r->run( commit => '-m', $commit{1}{subject} );
+};
+my $err = $@;
+if ($err =~ /fatal: unable to auto-detect email address/) {
+    note 'git error';
+    done_testing; exit;
+}
+
 my $git_file = Git::Repository::FileHistory->new($r, 'file');
 
 ok( $git_file->created_at - time() < 60 , 'created_at');
