@@ -46,6 +46,10 @@ sub last_modified_at {
     my $last = shift->last_log;
     $last && $last->author_gmtime;
 }
+{
+    no warnings 'once';
+    *updated_at = *last_modified_at;
+}
 
 sub created_by {
     my $first = shift->first_log;

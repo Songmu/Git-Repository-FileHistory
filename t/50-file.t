@@ -54,6 +54,7 @@ my $git_file = Git::Repository::FileHistory->new($r, 'file');
 
 ok( $git_file->created_at - time() < 60 , 'created_at');
 ok( $git_file->created_at == $git_file->last_modified_at , 'last_modified_at');
+ok( $git_file->updated_at == $git_file->last_modified_at , 'updated_at');
 
 my @logs = $git_file->logs;
 ok( @logs == 1 );
@@ -68,6 +69,8 @@ my $git_file2 = Git::Repository::FileHistory->new($r, 'file');
 
 ok( $git_file->created_at == $git_file2->created_at , 'created_at');
 ok( $git_file2->created_at != $git_file2->last_modified_at , 'last_modified_at');
+ok( $git_file->updated_at == $git_file->last_modified_at , 'updated_at');
+
 @logs = $git_file2->logs;
 ok( @logs == 2 );
 ok( $_->isa('Git::Repository::Log'), 'log is Git::Repository::Log') for @logs;
