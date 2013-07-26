@@ -7,7 +7,7 @@ sub _keywords { qw/file_history/ }
 
 use Git::Repository::FileHistory;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub file_history {
     Git::Repository::FileHistory->new(@_);

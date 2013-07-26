@@ -2,5 +2,8 @@ Revision history for Perl extension Git::Repository::FileHistory
 
 {{$NEXT}}
 
+0.02 2013-07-26T09:18:12Z
+        - fix test cases and dependencies
+
 0.01 2013-07-21T14:24:48Z
         - original version
