@@ -1,8 +1,21 @@
 requires 'Git::Repository';
 requires 'Git::Repository::Plugin::Log';
 requires 'parent';
-requires 'perl', '5.006';
+requires 'perl', '5.008001';
 
-on build => sub {
-    requires 'ExtUtils::MakeMaker', '6.59';
+on configure => sub {
+    requires 'CPAN::Meta';
+    requires 'CPAN::Meta::Prereqs';
+    requires 'Module::Build';
+};
+
+on test => sub {
+    requires 'File::Temp';
+    requires 'Git::Repository';
+    requires 'Test::Git';
+    requires 'Test::More';
+};
+
+on develop => sub {
+    requires 'Test::Perl::Critic';
 };
