@@ -1,4 +1,5 @@
 requires 'Git::Repository';
+requires 'Git::Repository::Plugin::Log';
 requires 'parent';
 requires 'perl', '5.006';
 

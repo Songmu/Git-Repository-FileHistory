@@ -48,6 +48,7 @@
       "runtime" : {
          "requires" : {
             "Git::Repository" : "0",
+            "Git::Repository::Plugin::Log" : "0",
             "parent" : "0",
             "perl" : "5.008001"
          }
