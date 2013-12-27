@@ -4,7 +4,7 @@
       "Masayuki Matsuki <y.songmu@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.6, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Minilla/v0.11.0, CPAN::Meta::Converter version 2.132510",
    "license" : [
       "perl_5"
    ],
@@ -21,7 +21,8 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
@@ -66,8 +67,9 @@
          "web" : "https://github.com/Songmu/Git-Repository-FileHistory"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_contributors" : [
-      "Matsuki Masayuki <matsuki-masayuki@kayac.com>"
+      "Matsuki Masayuki <matsuki-masayuki@kayac.com>",
+      "Takuya Tsuchida <takuya.tsuchida@gmail.com>"
    ]
 }
