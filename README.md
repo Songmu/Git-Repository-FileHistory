@@ -7,11 +7,9 @@ Git::Repository::FileHistory - Class representing file on git repository
     # load the File plugin
     use Git::Repository 'FileHistory';
     
-
     my $repo = Git::Repository->new;
     my $file = $repo->file_history('somefile');
     
-
     print $file->created_at;
     print $file->created_by;
     print $file->last_modified_at;
@@ -60,8 +58,8 @@ BooK gives me many advice. Thanks a lot.
 
 # SEE ALSO
 
-[Git::Repository](http://search.cpan.org/perldoc?Git::Repository)
-[Git::Repository::Log](http://search.cpan.org/perldoc?Git::Repository::Log)
+[Git::Repository](https://metacpan.org/pod/Git::Repository)
+[Git::Repository::Log](https://metacpan.org/pod/Git::Repository::Log)
 
 # LICENSE
 
