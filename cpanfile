@@ -13,6 +13,7 @@ on test => sub {
     requires 'File::Temp';
     requires 'Git::Repository';
     requires 'Test::Git';
+    requires 'Test::Requires::Git', '1.005';
     requires 'Test::More';
 };
 
